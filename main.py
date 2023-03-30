@@ -11,13 +11,9 @@ class Post(BaseModel):
 
 app=FastAPI()
 
-@app.get('/')
-def root():
-    return {'message':"helloword"}
-
-@app.put('/createpost')
-def create_first_post(new_post:Post):
-    print(new_post.title)
-    print(new_post.content)
-    print(new_post.published)
-    return {"message":new_post}
+#create a post
+@app.post('/posts')
+def create_posts(post:Post):
+    print(post)
+    print(post.dict())
+    return {"data":post}
